@@ -1,0 +1,168 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="FilterImage.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FilterImage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
+    <Page.Resources>
+
+        <Color x:Key="PrimaryColor">DarkOrange</Color>
+        <Thickness x:Key="PrimaryFontSize">20</Thickness>
+        
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="Lucida Fax"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="FontSize" Value="{StaticResource PrimaryFontSize}"/>
+        </Style>
+        
+        <Style x:ConnectionId='2' x:Name="UsedFilter" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="35"/>
+            <Setter Property="Margin" Value="5, 0, 0, 0"/>
+        </Style>
+
+        <Style x:ConnectionId='3' x:Name="UsedFilter_matrix" TargetType="TextBlock">
+            <Setter Property="Height" Value="12"/>
+            <Setter Property="Width" Value="12"/>
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="5, 0, 3, 0"/>
+        </Style>
+    </Page.Resources>
+    
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition x:ConnectionId='4' Height="100" x:Name="GridRow_Advance" MaxHeight="0"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <Button x:ConnectionId='5' x:Name="OpenFile_Button"
+                Content="Otwórz"
+                Grid.Row="0"
+                Grid.Column="0"
+                                      />
+
+        <Button x:ConnectionId='6' x:Name="SaveFile_Button"
+                Content="Zapisz"
+                Grid.Row="0"
+                Grid.Column="1"
+                                       FontFamily="Lucida Console"/>
+
+
+        <TextBlock x:ConnectionId='7' x:Name="fileName_textBlock"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"/>
+
+
+        <Image x:ConnectionId='8' x:Name="OryginalLayer_Image"  
+               Source="Assets/noImg.jpg"
+               Grid.Row="2"
+               Grid.ColumnSpan="2"/>
+
+        <Image x:ConnectionId='9' x:Name="FilteredLayer_Image"  
+               Source="Assets/noImg.jpg"
+               Grid.Row="2"
+               Grid.ColumnSpan="2"/>
+
+
+        <ComboBox x:ConnectionId='10' x:Name="Filters_ComboBox"
+            Grid.Row="3"
+            Grid.Column="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Margin="10,0,60,0"
+                                              
+                                                  
+         />
+
+        <Button x:ConnectionId='11' x:Name="SelectFilter_Button"
+                Content=">>"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                                       />
+
+        <ToggleSwitch x:ConnectionId='12' x:Name="autoPreview_Switch"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0, 60, 0, 0"
+                IsOn="False"
+                OnContent="Podgląd"
+                OffContent="Podgląd"
+                                            
+            />
+
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="1"
+            Text="Przezroczystość:"
+            Margin="60, 45, 30, 0"
+/>
+
+        <Slider x:ConnectionId='13' x:Name="filterLayerOpacity_Slider"
+                Grid.Row="3"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Margin="60, 60, 30, 0"
+                Minimum="0"
+                Maximum="100"
+                Value="0"
+                                                              
+            />
+
+        <RelativePanel x:ConnectionId='14' x:Name="UsedFilters_Panel"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Margin="60,0,0,0"               
+                    ScrollViewer.HorizontalScrollMode="Auto">
+        </RelativePanel>
+
+
+        <Button x:ConnectionId='15'
+            Content="Zaawansowane v"
+            Grid.Row="4"
+            Grid.Column="1"
+                                  />
+
+        <Button x:ConnectionId='16' x:Name="Filter_Button"
+                Content="Filtruj"
+                Grid.Row="4"
+                Grid.ColumnSpan="1"
+                                    />
+        
+    </Grid>
+</Page>
+
